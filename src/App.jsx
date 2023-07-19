@@ -1,33 +1,25 @@
+import { Routes, Route } from "react-router-dom";
 
-import './App.css';
+import Home from "./routes/home/home.page";
+import NavigationBar from "./routes/navigation/navigation.page";
+import SignIn from "./routes/sign-in/sign-in.page";
 
-import CategoryContainer from './components/category-container/category-container.component';
-import CategoriesItem from './components/categories-item/categories-item.component';
-import Directory from './components/directory/directory.components';
+const Shop = () => {
+  return <div> <h1>TES</h1></div>
+}
 
 const App = ()=> {
-  const categories = CategoriesItem
-
   return (
-    
-        <Directory categories={categories} CategoryContainer={CategoryContainer}/>
+    <Routes>
+      <Route path='/' element={<NavigationBar />}>
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="sign-in" element={<SignIn/>} />
+      </Route>
 
+    </Routes>
+    
   );
 }
 
 export default App;
-
-/* <div className='fixed bg-slate-600 top-0 h-8 opacity-40 w-screen flex flex-row justify-around'>
-  <p className='text-white'> 
-    Header
-  </p>
-  <p className='text-white'> 
-    Header
-  </p>
-  <p className='text-white'> 
-    Header
-  </p>
-  <p className='text-white'> 
-    Header
-  </p> 
-</div> */
