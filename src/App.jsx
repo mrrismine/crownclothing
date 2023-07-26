@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./routes/home/home.page";
 import NavigationBar from "./routes/navigation/navigation.page";
-import SignIn from "./routes/sign-in/sign-in.page";
+import SignIn from "./routes/authentication/authentication.page";
 
 const Shop = () => {
   return <div> <h1>TES</h1></div>

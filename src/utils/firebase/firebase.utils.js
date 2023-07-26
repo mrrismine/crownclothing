@@ -3,14 +3,15 @@ import { initializeApp } from "firebase/app";
 import { 
    GoogleAuthProvider, 
    getAuth, 
-   signInWithPopup 
+   signInWithPopup,
+   createUserWithEmailAndPassword,
+   signInWithEmailAndPassword
 } from 'firebase/auth'
 import {
    getFirestore,
    doc,
    getDoc,
-   setDoc,
-   deleteDoc
+   setDoc
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -33,9 +34,11 @@ export const auth = getAuth()
 export const SignInwithGooglePopUp = () => signInWithPopup(auth,provider)
 
 export const db = getFirestore()
-export const CreateDocumentUserFromUserAuth = async (userAuth) => {
-   const UserDocRef = await doc(db, 'users', userAuth.uid)
 
+
+export const CreateDocumentUserFromUserAuth = async (userAuth, additionalInformation) => {
+   const UserDocRef = await doc(db, 'users', userAuth.uid)
+   
    const UserSnapShot = await getDoc(UserDocRef)
 
    if(!UserSnapShot.exists()) {
@@ -43,8 +46,10 @@ export const CreateDocumentUserFromUserAuth = async (userAuth) => {
       const createdAt = new Date()
       try {
          await setDoc(UserDocRef, {
-            displayName, email, createdAt
-            
+            displayName, 
+            email, 
+            createdAt,
+            ...additionalInformation
          })
          console.log('user has been made')
       } catch (error) {
@@ -54,7 +59,6 @@ export const CreateDocumentUserFromUserAuth = async (userAuth) => {
    return UserDocRef
 }
 
-export const DeleteUserFromUserAuth = async (userAuth) => {
-   const UserDocRef = doc(db,'users', userAuth.uid)
-   await deleteDoc(UserDocRef)
-}
+export const CreateUserAndPasswordFromAuth = (email, password) => createUserWithEmailAndPassword(auth, email, password)
+
+export const SignInWithUserAndPasswordFromAuth = (email, password) => signInWithEmailAndPassword(auth, email, password)

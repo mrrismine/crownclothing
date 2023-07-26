@@ -6,7 +6,7 @@ import { ReactComponent as CrwnLogo} from '../../assets/horse.svg'
 const NavigationBar = () => {
    return (
       <Fragment>
-         <div className="bg-gray-200 navigation border-b-4 mb-10 h-20 border-black flex flex-row justify-between">
+         <div className="bg-gray-200 navigation border-b-4 h-20 border-black flex flex-row justify-between fixed right-0 left-0 top-0">
             <Link className="logo-container flex flex-row items-center" to='/'>
                <CrwnLogo />
             </Link>
