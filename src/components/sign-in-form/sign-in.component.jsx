@@ -1,11 +1,9 @@
+import { useState } from "react"
 import { 
    SignInWithUserAndPasswordFromAuth,
-   CreateDocumentUserFromUserAuth,
    SignInwithGooglePopUp
 } 
 from "../../utils/firebase/firebase.utils"
-
-import { useState } from "react"
 
 import {ReactComponent as CrwnLogo} from '../../assets/horse.svg'
 
@@ -33,8 +31,8 @@ const SignInForm = () => {
    const onSubmitHandler = async (event) => {
       event.preventDefault()
        try {
-         const response = await SignInWithUserAndPasswordFromAuth(email,password)
-         console.log(response)
+         await SignInWithUserAndPasswordFromAuth(email,password)
+
          resetFormField()
       } catch (error) {
         switch (error.code) {
@@ -53,20 +51,18 @@ const SignInForm = () => {
     const LoginWithGoogle = async () => {
         
         try {
-            const {user} = await SignInwithGooglePopUp()
-            console.log(user)
-            await CreateDocumentUserFromUserAuth(user)
+            await SignInwithGooglePopUp()
         } catch (error) {
             switch(error.code){
                 case 'auth/popup-closed-by-user' :
                     alert('Not Yet Sign In');
+                    break;
                 default:
                     console.log(error)
             }
         }
     }
 
-   console.log(formfields)
 
    return(
       <div className="sign-in-form">

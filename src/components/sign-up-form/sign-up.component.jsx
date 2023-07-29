@@ -1,10 +1,10 @@
+import { useState } from "react"
+
 import { 
    CreateUserAndPasswordFromAuth,
    CreateDocumentUserFromUserAuth
 } 
 from "../../utils/firebase/firebase.utils"
-
-import { useState } from "react"
 
 import {ReactComponent as CrwnLogo} from '../../assets/horse.svg'
 
@@ -37,6 +37,8 @@ const SignUpForm = () => {
       try {
          let {user} = await CreateUserAndPasswordFromAuth(email, password)
          await CreateDocumentUserFromUserAuth(user, {displayName: displayName})
+         alert('User Has been Made')
+
          resetFormField()
       } catch (error) {
          if(error.code === 'auth/email-already-in-use') {
@@ -46,8 +48,6 @@ const SignUpForm = () => {
          }
       }
    }
-
-   console.log(formfields)
 
    return(
       <div className="signupform">
