@@ -1,7 +1,7 @@
 const CategoryContainer = ({category})=> {
    const {imageUrl, title} = category
    return(
-      <div className='category-container border-2 rounded-lg p-14 mt-10 hover:scale-110 transition-transform cursor-pointer' 
+      <div className='category-container border-2 rounded-lg p-14 mt-10 hover:scale-110 transition-transform cursor-pointer max-h-96' 
       style={{
          backgroundImage: `url(${imageUrl})`,
          backgroundSize: `1 rem`
