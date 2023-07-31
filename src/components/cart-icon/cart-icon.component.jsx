@@ -5,7 +5,7 @@ import { CartDropDownContext } from '../../contexts/cart-dropdown.contexts';
 
 
 export const CartIconComponent = () => {
-   const {currentDropDown, setCurrentDropDown} = useContext(CartDropDownContext)
+   const {currentDropDown, setCurrentDropDown, cartCount} = useContext(CartDropDownContext)
    
    const onClickHandler = () => {
       setCurrentDropDown(!currentDropDown)
@@ -14,6 +14,7 @@ export const CartIconComponent = () => {
    return(
       <div className='flex flex-col place-items-center cursor-pointer'>
          <ShoppingIcon onClick={onClickHandler} className=' w-6 h-8'/>
+         <span className=' font-mono text-xs font-bold'>{cartCount}</span>
       </div>
       
    )

@@ -1,17 +1,18 @@
 import { Fragment, useContext } from "react"
 
 import { CartDropDownContext } from "../../contexts/cart-dropdown.contexts"
+import CartItem from "../cart-item/cart-item.component"
 
 const CartDropDown = () => {
-   const { currentDropDown} = useContext(CartDropDownContext)
-
+   const { currentDropDown, cartItems} = useContext(CartDropDownContext)
+   
    return (
    <Fragment >
          {
             currentDropDown ? (
-            <div className="flex flex-col fixed top-20 z-10 bg-white w-64 h-96 border-black border-2 justify-between">
+            <div className="flex flex-col absolute top-20 z-10 bg-white w-64 h-96 border-black border-2 justify-between">
                <div>
-            
+                     <CartItem items={cartItems}/>
                </div>
                <button className=" bg-black text-white mb-4 w-3/4 items-center self-center p-2 rounded-lg">GO TO CHECK OUT</button>
             </div>
