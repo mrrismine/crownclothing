@@ -2,6 +2,7 @@ import { Fragment, useContext } from "react"
 
 import { CartDropDownContext } from "../../contexts/cart-dropdown.contexts"
 import CartItem from "../cart-item/cart-item.component"
+import { Link } from "react-router-dom"
 
 const CartDropDown = () => {
    const { currentDropDown, cartItems} = useContext(CartDropDownContext)
@@ -14,7 +15,7 @@ const CartDropDown = () => {
                <div>
                      <CartItem items={cartItems}/>
                </div>
-               <button className=" bg-black text-white mb-4 w-3/4 items-center self-center p-2 rounded-lg">GO TO CHECK OUT</button>
+               <Link className=" bg-black text-white mb-4 w-3/4 items-center text-center self-center p-2 rounded-lg" to='/checkout'>GO TO CHECK OUT</Link>
             </div>
             ) : (
                <>

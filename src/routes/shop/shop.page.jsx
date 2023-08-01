@@ -5,7 +5,7 @@ import { ProductCard } from "../../components/product-card/product-card.componen
 
 const ShopPage = () => {
    const {currentProduct} = useContext(ProductContext)
-
+   
    return(
       <ProductCard products={currentProduct}/>
    )

@@ -7,9 +7,9 @@ const CartItem = ({items}) => {
          {
             items[0] ? (
                items.map((item) => {
-                  const {name, imageUrl, quantity, price} = item
+                  const {name, imageUrl, quantity, price, id} = item
                   return (
-                     <div className="grid grid-cols-3 font-mono text-sm font-bold m-2 text-center border-2 items-center">
+                     <div className="grid grid-cols-3 font-mono text-sm font-bold m-2 text-center border-2 items-center" key={id}>
                         <img src={imageUrl} className=" max-h-16 w-14" alt={name}/>
                         <span>{name}</span>
                         <span>{quantity} x ${price}</span>

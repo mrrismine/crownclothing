@@ -4,7 +4,7 @@ import { CartDropDownContext } from "../../contexts/cart-dropdown.contexts"
 
 export const ProductCard = ({products}) => {
 
-   const {addItemToCart, setCartCount, cartCount} = useContext(CartDropDownContext)
+   const {addItemToCart } = useContext(CartDropDownContext)
 
    return (
       <div className='m-20'>
@@ -14,7 +14,7 @@ export const ProductCard = ({products}) => {
                products.map((product) => {
                   const addToCartHandler = () => {
                      addItemToCart(product)
-                     setCartCount(cartCount+1)
+
                   }
 
                   return (
