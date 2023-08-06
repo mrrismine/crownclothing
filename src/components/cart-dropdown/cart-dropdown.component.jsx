@@ -11,7 +11,7 @@ const CartDropDown = () => {
    <Fragment >
          {
             currentDropDown ? (
-            <div className="flex flex-col absolute top-20 z-10 bg-white w-64 h-96 border-black border-2 justify-between">
+            <div className="flex flex-col absolute top-20 z-10 bg-white w-64 h-96 border-black border-2 justify-between ">
                <div>
                      <CartItem items={cartItems}/>
                </div>

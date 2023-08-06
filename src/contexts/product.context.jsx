@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-import SHOP_DATA from '../assets/shop-data.json'
+import { getCollectionFromFirestore } from "../utils/firebase/firebase.utils";
 
 export const ProductContext = createContext({
    currentProduct : null,
@@ -8,8 +8,18 @@ export const ProductContext = createContext({
 }) 
 
 export const ProductProvider = ({children}) => {
-   const [currentProduct, setCurrentProduct] = useState(SHOP_DATA)
+   const [currentProduct, setCurrentProduct] = useState([])
    const value = {currentProduct}
+
+   useEffect(() => {
+      const getCategoryMap = async() => {
+         const categoryMap = await getCollectionFromFirestore()
+         setCurrentProduct(categoryMap)
+      }
+      getCategoryMap()
+      
+   },[])
+   
 
    return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
 }

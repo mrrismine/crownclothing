@@ -1,14 +1,15 @@
-import { useContext } from "react"
+import { Route, Routes } from "react-router-dom"
 
-import { ProductContext } from "../../contexts/product.context"
-import { ProductCard } from "../../components/product-card/product-card.component"
+import ShopPreview from "../preview/preview.page"
+import Category from "../shop-category/shop-category.page"
 
-const ShopPage = () => {
-   const {currentProduct} = useContext(ProductContext)
-   
-   return(
-      <ProductCard products={currentProduct}/>
+const Shop = () => {
+   return (
+         <Routes>
+            <Route index element={< ShopPreview/>} />
+            <Route path=":category" element={<Category />} />
+         </Routes>
    )
 }
 
-export default ShopPage
+export default Shop
